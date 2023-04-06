@@ -2,6 +2,12 @@
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
+if [ -f ~/.bash_work_specific ]; then
+    . ~/.bash_work_specific 
+fi
+
+
 # set timezone
 export TZ="/usr/share/zoneinfo/US/Mountain";
 
