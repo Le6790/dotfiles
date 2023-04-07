@@ -1,13 +1,17 @@
 syntax enable
+set autoread
 set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
+"let g:solarized_termcolors=256
+"colorscheme solarized
 
 " Spacing
 set expandtab
+set smarttab
+set autoindent
+"set smartindent
 set tabstop=4
-set softtabstop=4
-"filetype indent on
+set softtabstop=0
+filetype indent on
 
 "UI Config
 set number
