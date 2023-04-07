@@ -121,7 +121,6 @@ function tmuxnew() {
 }
 
 alias tmux="tmux -f ~/.tmux.conf -u"
-alias cura="~/.UltiMaker-Cura-5.3.0-linux.AppImage"
 
 
 
