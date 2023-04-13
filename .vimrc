@@ -52,7 +52,7 @@ let g:NERDTreeChDirMode = 2
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
 
 "Add python comments for commentary plugin
-autocmd FileType sh,python,text setlocal commentstring=#\%s 
+autocmd FileType yml,sh,python,text setlocal commentstring=#\%s 
 
 "Supposlively allows copy to system clipboard
 set clipboard=unnamedplus

@@ -7,6 +7,11 @@ if [ -f ~/.bash_work_specific ]; then
     . ~/.bash_work_specific 
 fi
 
+if [ -f ~/.fzf_commands.sh ]; then
+    . ~/.fzf_commands.sh
+fi
+
+
 
 # set timezone
 export TZ="/usr/share/zoneinfo/US/Mountain";
@@ -120,9 +125,18 @@ function tmuxnew() {
     tmux new -s $1
 }
 
-alias tmux="tmux -f ~/.tmux.conf -u"
-
-
-
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+
+#determines search program for fzf
+if type ag &> /dev/null; then
+            export FZF_DEFAULT_COMMAND='ag -p ~/.gitignore -g ""'
+fi
+#refer rg over ag
+if type rg &> /dev/null; then
+            export FZF_DEFAULT_COMMAND='rg --files --hidden'
+fi
+
+
+

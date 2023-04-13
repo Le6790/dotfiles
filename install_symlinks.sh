@@ -37,3 +37,10 @@ then
         mv ~/.alacritty ~/.alacritty_backup
 fi    
 ln -s $PWD/.alacritty ~/.alacritty 
+
+#fzf
+if [ -f ~/.fzf_commands.sh];
+then
+        mv ~/.fzf_commands.sh ~/.fzf_commands.sh_backup
+fi
+ln -s  ~/dotfiles/.fzf_commands.sh ~/.fzf_commands.sh
