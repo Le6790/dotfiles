@@ -1,5 +1,5 @@
 syntax enable
-set autoread
+"set autoread
 set background=dark
 "let g:solarized_termcolors=256
 "colorscheme solarized
@@ -41,12 +41,18 @@ set encoding=UTF-8
 set scrolloff=8
 set sidescrolloff=8
 
+"Move highlighted contents
+"*Only works on V9.0+...
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
 "NerdTree mappings
 nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let g:NERDTreeChDirMode = 2
-"set t_Co=256
+
+
 
 " go to the position I was when last editing the file
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
