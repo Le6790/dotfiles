@@ -1,3 +1,7 @@
+"remap leader to space
+nnoremap <SPACE> <Nop>
+let mapleader = " "
+
 syntax enable
 "set autoread
 set background=dark
@@ -38,8 +42,8 @@ set smartcase
 set encoding=UTF-8
                      
 "Keep cursor near center of screen
-set scrolloff=8
-set sidescrolloff=8
+set scrolloff=10
+set sidescrolloff=10
 
 "Move highlighted contents
 "*Only works on V9.0+...
@@ -52,7 +56,19 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let g:NERDTreeChDirMode = 2
 
+"Netrw 
+nnoremap <leader>pv :Ex<CR>
 
+"FZF
+nnoremap <leader>pf :Files<CR>
+
+"navigate through buffers
+nnoremap <leader>bn :bn<CR>
+nnoremap <leader>np :bp<CR>
+nnoremap <leader>ls :Buffers<CR>
+
+"allow for backspacing
+let backspace="indent,eol,start"
 
 " go to the position I was when last editing the file
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
