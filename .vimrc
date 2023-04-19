@@ -64,7 +64,7 @@ nnoremap <leader>pf :Files<CR>
 
 "navigate through buffers
 nnoremap <leader>bn :bn<CR>
-nnoremap <leader>np :bp<CR>
+nnoremap <leader>bp :bp<CR>
 nnoremap <leader>ls :Buffers<CR>
 
 "allow for backspacing
