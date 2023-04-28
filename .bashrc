@@ -1,4 +1,4 @@
-. ~/.bash_profile
+# . ~/.bash_profile
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -125,6 +125,9 @@ function tmuxnew() {
     tmux new -s $1
 }
 
+function nvim_scp() {
+   nvim scp://pi@192.168.0.53/$1
+}
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
