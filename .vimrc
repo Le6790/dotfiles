@@ -61,6 +61,7 @@ nnoremap <leader>pv :Ex<CR>
 
 "FZF
 nnoremap <leader>pf :Files<CR>
+nnoremap <leader>notes :Files ~/notes/<CR>
 
 "navigate through buffers
 nnoremap <leader>bn :bn<CR>
