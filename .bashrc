@@ -12,7 +12,6 @@ if [ -f ~/.fzf_commands.sh ]; then
 fi
 
 
-
 # set timezone
 export TZ="/usr/share/zoneinfo/US/Mountain";
 
@@ -144,3 +143,4 @@ fi
 
 
 
+export PATH="$HOME/.local/bin:$PATH"

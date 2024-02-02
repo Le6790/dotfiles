@@ -10,8 +10,6 @@ alias cura="~/.UltiMaker-Cura-5.3.0-linux.AppImage"
 
 alias src="source ~/.bashrc | echo sourced ~/.bashrc"
 
-alias nvim="~/nvim.appimage"
-
 alias spt="/home/dharok/.cargo/bin/spt"
 
 alias disable_screens="xrandr --output DP-4 --off; xrandr --output DP-1 --off"
@@ -23,3 +21,5 @@ function obsidian (){
   nvim
 
 }
+
+
