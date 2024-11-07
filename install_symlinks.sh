@@ -39,7 +39,7 @@ fi
 ln -s $PWD/.alacritty ~/.alacritty 
 
 #fzf
-if [ -f ~/.fzf_commands.sh];
+if [ -f ~/.fzf_commands.sh ];
 then
         mv ~/.fzf_commands.sh ~/.fzf_commands.sh_backup
 fi
