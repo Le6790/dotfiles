@@ -11,8 +11,7 @@ fi
 ln -s $PWD/.bashrc ~/.bashrc 
 
 #.tmux.conf
-if [ -f ~/.tmux.conf ]; 
-then
+if [ -f ~/.tmux.conf ]; then
         mv ~/.tmux.conf ~/.tmux.conf_backup
 fi    
 ln -s $PWD/.tmux.conf ~/.tmux.conf 
@@ -44,3 +43,12 @@ then
         mv ~/.fzf_commands.sh ~/.fzf_commands.sh_backup
 fi
 ln -s  ~/dotfiles/.fzf_commands.sh ~/.fzf_commands.sh
+
+
+#.bashrc
+if [ -f ~/.config/starship.toml ]; 
+then
+        mv ~/.config/starship.toml ~/.config/starship.toml_backup
+fi    
+ln -s $PWD/starship.toml ~/.config/starship.toml 
+
