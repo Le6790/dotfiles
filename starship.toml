@@ -11,6 +11,7 @@ $git_branch\
 $memory_usage\
 $status\
 $line_break\
+  $python\
 $character"""
 # format = """
 # $hostname\
@@ -39,6 +40,8 @@ scan_timeout = 10
 
 palette = "catppuccin_mocha"
 
+# [env_var.USER]
+# default = "rr377574"
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
 flamingo = "#f2cdcd"
@@ -71,15 +74,19 @@ crust = "#11111b"
 [username]
 show_always = true
 format = '[$user](green)[@](flamingo)'
+#format = '[$user(blue)]'
+# format = '[$user](bold blue)[@](bold green)'
 
 [hostname]
 ssh_only = false
 format = '[$hostname](mauve) '
+# format = '[$hostname](bold yellow) '
 
 [directory]
 truncate_to_repo = false
 truncation_length = 10
 truncation_symbol = '.../'
+# style = 'red'
 style = 'bold sapphire'
 format = '[$path]($style)/ [$read_only]($read_only_style)'
 
@@ -93,13 +100,16 @@ format = '🚀[$duration](bold red) '
 [memory_usage]
 threshold = 10
 style = "bold white"
-format = '[RAM: ](bold peach)[${ram_pct}](bold yellow)[ Swap: ](bold peach)[${swap_pct}](bold yellow) '
+#format = '[RAM: ](bold peach)[${ram_pct}](bold yellow)[ Swap: ](bold peach)[${swap_pct}](bold yellow) '
+format = '[RAM: ](bold peach)[${ram_pct}](bold yellow) '
 disabled = false
 
 
 [line_break]
 
 [status]
+
+
 
 [os]
 disabled = false
@@ -113,10 +123,17 @@ nu_indicator = "✨"
 
 # Replace the '>' symbol in the prompt with '➜'
 [character] # The name of the module we are configuring is 'character'
+# success_symbol = '[➜](green)' # The 'success_symbol' segment is being set to 'âzo' with the color 'bold green'
 success_symbol = '[->](bold green)' # The 'success_symbol' segment is being set to 'âzo' with the color 'bold green'
+# error_symbol = '[✗](red) '
 error_symbol = '[XX](bold red)'
 
-
+[python]
+format = 'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+detect_extensions = []
+detect_files = []
+style = 'yellow'
+symbol = '🐍 '
 
 # This is the default symbols table.
 # [os.symbols]
@@ -161,4 +178,3 @@ error_symbol = '[XX](bold red)'
 # Ubuntu = "🎯 "
 # Unknown = "❓ "
 # Windows = "🪟 "
-

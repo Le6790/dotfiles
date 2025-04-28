@@ -15,6 +15,9 @@ fi
 # set timezone
 export TZ="/usr/share/zoneinfo/US/Mountain";
 
+export EDITOR="~/nvim.appimage"
+export VISUAL="~/nvim.appimage"
+
 #Automatically enable Tmux on startup
 #if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
 #        tmux -u attach-session -t ssh_tmux || tmux -u new-session -s ssh_tmux
