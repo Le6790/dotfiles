@@ -11,6 +11,15 @@ if [ -f ~/.fzf_commands.sh ]; then
     . ~/.fzf_commands.sh
 fi
 
+# Shell option - auto corrects small spelling errors in the cd command
+shopt -s cdspell
+
+# Shell option -  Let's you cd into a directory without typing cd
+shopt -s autocd
+
+# Shell option - appends to ~/.bash_history instead of overwriting it when closing the shell
+shopt -s histappend
+
 
 # set timezone
 export TZ="/usr/share/zoneinfo/US/Mountain";
@@ -106,13 +115,13 @@ cpp()
 				printf "]\r"
 			}
 		}
-	END { print "" }' total_size=$(stat -c '%s' "${1}") count=0
+	END { print "" }' total_size="$(stat -c '%s' "${1}")" count=0
 }
 
 # grep through the bash history for a command
 function hst()
 {
-	history | grep $1;
+	history | grep "$1";
 }
 
 # change directory and list the contents
@@ -123,17 +132,17 @@ function cdl()
 
 # Attach to a tmux session
 function tmuxattach(){
-    tmux attach-session -t $1
+    tmux attach-session -t "$1"
 }
 
 # Create a new tmux session
 function tmuxnew() {
-    tmux new -s $1
+    tmux new -s "$1"
 }
 
 # edit files on the pi via nvim
 function nvim_scp() {
-   nvim scp://pi@192.168.0.53/$1
+   nvim scp://pi@192.168.0.53/"$1"
 }
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
