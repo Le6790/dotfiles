@@ -45,10 +45,17 @@ fi
 ln -s  ~/dotfiles/.fzf_commands.sh ~/.fzf_commands.sh
 
 
-#.bashrc
+#.starship
 if [ -f ~/.config/starship.toml ]; 
 then
         mv ~/.config/starship.toml ~/.config/starship.toml_backup
 fi    
 ln -s $PWD/starship.toml ~/.config/starship.toml 
+
+#.wezterm
+if [ -f ~/.wezterm.lua]; 
+then
+        mv ~/.wezterm.lua ~/.wezterm.lua.backup
+fi    
+ln -s $PWD/.wezterm.lua ~/.wezterm.lua
 

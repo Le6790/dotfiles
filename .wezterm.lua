@@ -21,14 +21,31 @@ config.keys = {
 	},
 }
 
+config.enable_scroll_bar = false
+config.mouse_bindings = {
+	-- Disable scrolling when NOT in alt-screen (shell, prompts)
+	{
+		event = { Down = { streak = 1, button = { WheelUp = 1 } } },
+		mods = "NONE",
+		alt_screen = false,
+		action = "DisableDefaultAssignment",
+	},
+	{
+		event = { Down = { streak = 1, button = { WheelDown = 1 } } },
+		mods = "NONE",
+		alt_screen = false,
+		action = "DisableDefaultAssignment",
+	},
+}
+
 config.font = wezterm.font("JetBrains Mono")
-config.font_size = 10.0
+config.font_size = 14.0
 config.color_scheme = "Kanagawabones"
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 config.integrated_title_buttons = { "Hide", "Maximize", "Close" }
 config.inactive_pane_hsb = { saturation = 0.8, brightness = 0.4 }
 config.window_background_image_hsb = { brightness = 0.05, hue = 1.0, saturation = 1.0 }
-config.window_background_opacity = 0.85
+config.window_background_opacity = 0.95
 config.force_reverse_video_cursor = true
 config.text_background_opacity = 0.8
 config.foreground_text_hsb = {

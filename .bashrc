@@ -15,7 +15,7 @@ fi
 shopt -s cdspell
 
 # Shell option -  Let's you cd into a directory without typing cd
-shopt -s autocd
+# shopt -s autocd
 
 # Shell option - appends to ~/.bash_history instead of overwriting it when closing the shell
 shopt -s histappend
@@ -24,8 +24,14 @@ shopt -s histappend
 # set timezone
 export TZ="/usr/share/zoneinfo/US/Mountain";
 
-export EDITOR="~/nvim.appimage"
-export VISUAL="~/nvim.appimage"
+OS_NAME=$(uname -s)
+
+if [[ "$OS_NAME" == "Linux" ]]; then
+
+	export EDITOR="~/nvim.appimage"
+	export VISUAL="~/nvim.appimage"
+
+fi
 
 #Automatically enable Tmux on startup
 #if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
