@@ -40,8 +40,8 @@ config.mouse_bindings = {
 
 config.font = wezterm.font("JetBrains Mono")
 config.font_size = 14.0
-config.color_scheme = "Kanagawabones"
-config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
+config.color_scheme = "Catppuccin Mocha"
+--config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 config.integrated_title_buttons = { "Hide", "Maximize", "Close" }
 config.inactive_pane_hsb = { saturation = 0.8, brightness = 0.4 }
 config.window_background_image_hsb = { brightness = 0.05, hue = 1.0, saturation = 1.0 }
