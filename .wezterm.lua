@@ -7,7 +7,7 @@ local config = {}
 -- adjust pane sizes
 -- ctrl shift alt <arrow_keys>
 --
-config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
+config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	{
 		key = "|",

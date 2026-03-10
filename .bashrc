@@ -25,6 +25,7 @@ shopt -s histappend
 export TZ="/usr/share/zoneinfo/US/Mountain";
 
 OS_NAME=$(uname -s)
+export EDITOR="nvim"
 
 if [[ "$OS_NAME" == "Linux" ]]; then
 

@@ -25,3 +25,10 @@ function obsidian(){
   cd ~/Documents/obsidian_brain/
   nvim
 }
+
+
+# Query claude code 
+?? () {
+  claude -p "$*"
+
+}
