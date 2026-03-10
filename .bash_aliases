@@ -26,6 +26,54 @@ function obsidian(){
   nvim
 }
 
+# Copy file with a progress bar
+cpp()
+{
+	set -e
+	strace -q -ewrite cp -- "${1}" "${2}" 2>&1 \
+	| awk '{
+	count += $NF
+	if (count % 10 == 0) {
+		percent = count / total_size * 100
+		printf "%3d%% [", percent
+		for (i=0;i<=percent;i++)
+			printf "="
+			printf ">"
+			for (i=percent;i<100;i++)
+				printf " "
+				printf "]\r"
+			}
+		}
+	END { print "" }' total_size="$(stat -c '%s' "${1}")" count=0
+}
+
+# grep through the bash history for a command
+function hst()
+{
+	history | grep "$1";
+}
+
+# change directory and list the contents
+function cdl()
+{
+	cd "$@" && ls -al;
+}
+
+# Attach to a tmux session
+function tmuxattach(){
+    tmux attach-session -t "$1"
+}
+
+# Create a new tmux session
+function tmuxnew() {
+    tmux new -s "$1"
+}
+
+# edit files on the pi via nvim
+function nvim_scp() {
+   nvim scp://pi@192.168.0.53/"$1"
+}
+
 
 # Query claude code 
 ?? () {

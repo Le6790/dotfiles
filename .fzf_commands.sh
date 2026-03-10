@@ -39,3 +39,10 @@ cdf() {
    local dir
    file=$(fzf  +m -q "$1" --preview='less {}') && dir=$(dirname "$file") && cd "$dir" 
 }
+
+# fe - oopen file in nvim
+fe() {
+    local file
+    file=$(fzf --preview='less {}') && nvim "$file"
+  }
+
