@@ -21,13 +21,27 @@ alias ll="ls -l"
 alias disable_screens="xrandr --output DP-4 --off; xrandr --output DP-1 --off"
 alias enable_screens="xrandr --output HDMI-0 --primary --mode 1920x1080 --rate 60 --output DP-4 --mode 1920x1080 --rate 60.00 --right-of HDMI-0 --output DP-1 --mode 1920x1080 --rate 60.00 --right-of DP-4"
 
+
+
+
 function obsidian(){
   cd ~/Documents/obsidian_brain/
   nvim
 }
 
+function cfp() {
+  local path
+  path=$(realpath "$1")
+  printf "\033]52;c;%s\a" "$(echo -n "$path" | base64 -w 0)"
+  echo "Copied $1 to clipboard!"
+}
 
-# Query claude code 
+function cwd() {
+  printf "\033]52;c;%s\a" "$(echo -n "$PWD" | base64 -w 0)"
+  echo "Copied $1 to clipboard!"
+}
+
+# Query claude code
 ?? () {
   claude -p "$*"
 
