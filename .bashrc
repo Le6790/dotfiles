@@ -17,10 +17,6 @@ shopt -s cdspell
 # Shell option -  Let's you cd into a directory without typing cd
 # shopt -s autocd
 
-# Shell option - appends to ~/.bash_history instead of overwriting it when closing the shell
-shopt -s histappend
-
-
 # set timezone
 export TZ="/usr/share/zoneinfo/US/Mountain";
 
@@ -58,6 +54,7 @@ shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=10000
 HISTFILESIZE=20000
+export HISTTIMEFORMAT="%F %T "
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -69,8 +66,6 @@ shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -84,13 +79,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -102,58 +90,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-
-# Copy file with a progress bar
-cpp()
-{
-	set -e
-	strace -q -ewrite cp -- "${1}" "${2}" 2>&1 \
-	| awk '{
-	count += $NF
-	if (count % 10 == 0) {
-		percent = count / total_size * 100
-		printf "%3d%% [", percent
-		for (i=0;i<=percent;i++)
-			printf "="
-			printf ">"
-			for (i=percent;i<100;i++)
-				printf " "
-				printf "]\r"
-			}
-		}
-	END { print "" }' total_size="$(stat -c '%s' "${1}")" count=0
-}
-
-# grep through the bash history for a command
-function hst()
-{
-	history | grep "$1";
-}
-
-# change directory and list the contents
-function cdl()
-{
-	cd "$@" && ls -al;
-}
-
-# Attach to a tmux session
-function tmuxattach(){
-    tmux attach-session -t "$1"
-}
-
-# Create a new tmux session
-function tmuxnew() {
-    tmux new -s "$1"
-}
-
-# edit files on the pi via nvim
-function nvim_scp() {
-   nvim scp://pi@192.168.0.53/"$1"
-}
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
 
 #determines search program for fzf
 if type ag &> /dev/null; then
@@ -161,10 +98,8 @@ if type ag &> /dev/null; then
 fi
 #refer rg over ag
 if type rg &> /dev/null; then
-            export FZF_DEFAULT_COMMAND='rg --files --hidden'
+            export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
 fi
-
-
 
 export PATH="$HOME/.local/bin:$PATH"
 
