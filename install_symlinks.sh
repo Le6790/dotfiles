@@ -1,4 +1,4 @@
-#/usr/bin/bash
+#! /usr/bin/bash
 set -e
 set -x
 
@@ -8,7 +8,12 @@ if [ -f ~/.bashrc ];
 then
         mv ~/.bashrc ~/.bashrc_backup
 fi    
-ln -s $PWD/.bashrc ~/.bashrc 
+#.inputrc
+if [ -f ~/.inputrc ]; 
+then
+        mv ~/.inputrc ~/.inputrc_backup
+fi    
+ln -s $PWD/.inputrc ~/.inputrc 
 
 #.tmux.conf
 if [ -f ~/.tmux.conf ]; then
