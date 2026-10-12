@@ -17,6 +17,8 @@ shopt -s cdspell
 # Shell option -  Let's you cd into a directory without typing cd
 # shopt -s autocd
 
+export CLICOLOR=1
+
 # set timezone
 export TZ="/usr/share/zoneinfo/US/Mountain";
 
