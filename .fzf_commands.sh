@@ -1,25 +1,18 @@
 # FZF shortcut commands
 # https://github.com/junegunn/fzf/wiki/examples
-
-# fd - cd to selected directory
-# fd() {
-  # local dir
-  # dir=$(find ${1:-.} -path '*/\.*' -prune \
-  #                 -o -type d -print 2> /dev/null | fzf +m) &&
-  # cd "$dir"
-# }
-
-# Another fd - cd into the selected directory
-# This one differs from the above, by only showing the sub directories and not
-#  showing the directories within those.
-fd() {
-  DIR=`find *  -type d -print 2> /dev/null | fzf-tmux` \
-    && cd "$DIR"
-} 
+#
+# fcd - cd into the selected sub directory (recursive, hidden dirs excluded).
+# Renamed from `fd`: that shadowed the real `fd` binary, which the `v` alias in
+# .bash_aliases depends on.
+fcd() {
+  local dir
+  dir=$(find . -path '*/.*' -prune -o -type d -print 2> /dev/null | fzf-tmux) \
+    && [ -n "$dir" ] && cd "$dir" || return
+}
 
 # fdr - cd to selected parent directory
 fdr() {
-  local declare dirs=()
+  local dirs=()
   get_parent_dirs() {
     if [[ -d "${1}" ]]; then dirs+=("$1"); else return; fi
     if [[ "${1}" == '/' ]]; then
@@ -28,8 +21,9 @@ fdr() {
       get_parent_dirs "$(dirname "$1")"
     fi
   }
-  local DIR=$(get_parent_dirs "$(realpath "${1:-$PWD}")" | fzf-tmux --tac)
-  cd "$DIR"
+  local DIR
+  DIR=$(get_parent_dirs "$(realpath "${1:-$PWD}")" | fzf-tmux --tac)
+  [ -n "$DIR" ] && cd "$DIR"
 }
 
 
@@ -37,12 +31,11 @@ fdr() {
 cdf() {
    local file
    local dir
-   file=$(fzf  +m -q "$1" --preview='less {}') && dir=$(dirname "$file") && cd "$dir" 
+   file=$(fzf  +m -q "$1" --preview='less {}') && dir=$(dirname "$file") && cd "$dir"
 }
 
-# fe - oopen file in nvim
+# fe - open file in nvim
 fe() {
     local file
     file=$(fzf --preview='less {}') && nvim "$file"
-  }
-
+}

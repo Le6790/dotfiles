@@ -31,8 +31,7 @@ set wildmenu
 "Enables mouse support
 set mouse=a 
 
-"Set terminal color range
-set term=screen-256color
+"Terminal type: left to the terminal/tmux ($TERM). Forcing `set term=` breaks nvim.
 
 "search case insensitive, if no upper case letters in search.
 set ignorecase
@@ -61,7 +60,7 @@ nnoremap <leader>pv :Ex<CR>
 
 "FZF
 nnoremap <leader>pf :Files<CR>
-nnoremap <leader>notes :Files ~/notes/<CR>
+nnoremap <leader>fn :Files ~/notes/<CR>
 
 "navigate through buffers
 nnoremap <leader>bn :bn<CR>
@@ -69,7 +68,7 @@ nnoremap <leader>bp :bp<CR>
 nnoremap <leader>ls :Buffers<CR>
 
 "allow for backspacing
-let backspace="indent,eol,start"
+set backspace=indent,eol,start
 
 " go to the position I was when last editing the file
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif

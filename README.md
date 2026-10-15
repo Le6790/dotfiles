@@ -1,19 +1,38 @@
 # Welcome to my collection of DOTFILES
 
-## This is a work in progress
+Personal config for macOS (zsh) and Linux / Pop!_OS (bash).
 
-### To install -
+## Install
 
-`./install_symlinks.sh`
+```bash
+./install_symlinks.sh
+```
 
-This will create symlinks in the respective directories for each file.
-If the file exists, it will back it up beforehand.
+Symlinks each file below into `$HOME` (or `~/.config`). Real files already
+there are moved to `<name>_backup_<timestamp>` (never overwritten); old
+symlinks are replaced. Safe to re-run, works from any directory.
 
-### Case Insensitive Bash
+## What's here
 
-If ~/.inputrc doesn't exist yet: First include the original /etc/inputrc
-so it won't get overriden
-if [ ! -a ~/.inputrc ]; then echo '$include /etc/inputrc' > ~/.inputrc; fi
+| File | Platform | Purpose |
+|---|---|---|
+| `.bashrc`, `.bash_profile`, `.bash_aliases` | Linux (and bash on macOS) | Shell setup. `.bashrc` returns early for non-interactive shells; PATH for those lives in `.bash_profile`. |
+| `.zshrc` | macOS | zsh equivalent; sources `.bash_aliases` and `.fzf_commands.sh`. |
+| `.inputrc` | bash | Case-insensitive completion. Includes `/etc/inputrc` first so system defaults survive. |
+| `.fzf_commands.sh` | both | fzf helpers: `fcd`, `fdr`, `cdf`, `fe`. |
+| `.tmux.conf`, `.vimrc` | both | tmux / vim config. |
+| `.alacritty.yml`, `.wezterm.lua`, `starship.toml` | both | Terminal and prompt. |
+| `keyboard_control.sh` | Linux/X11 only | Enable/disable the built-in laptop keyboard via `xinput`. Not linked by the installer. |
+| `colors.sh` | both | Prints the 256 terminal colours (for picking tmux colours). Not linked. |
+| `epomaker_split65/` | n/a | Keyboard layout JSON for the Epomaker Split65. Not linked. |
+| `programs_to_install.md` | n/a | Tools these configs expect. |
 
- Add shell-option to ~/.inputrc to enable case-insensitive tab completion
-echo 'set completion-ignore-case On' >> ~/.inputrc
+## Machine-specific / secret config
+
+`~/.bash_work_specific` and `~/.zsh_work_specific` are sourced if present and
+are **gitignored**. Put work hostnames, tokens, and exports there, never in
+this repo.
+
+## Decisions and history
+
+See `NOTES_*.md` for the why behind changes, open threads, and gotchas.

@@ -1,3 +1,20 @@
+# machine/work specific files (may hold secrets or internal hostnames)
+.bash_work_specific
 .work_specific.sh
-.vim
+.zsh_work_specific
 
+# secrets
+.env
+.env.*
+*.pem
+*.key
+
+# local backups made by install_symlinks.sh and scratch files
+*_backup
+*.backup
+*.bak.*
+
+# large/third-party binaries: install via package manager instead
+zellij
+
+.vim

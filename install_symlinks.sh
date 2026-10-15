@@ -1,66 +1,44 @@
-#! /usr/bin/bash
-set -e
-set -x
+#!/usr/bin/env bash
+# Symlink dotfiles from this repo into $HOME.
+# Existing real files are moved to <name>_backup_<timestamp> (never overwritten);
+# existing symlinks are replaced. Safe to re-run.
+set -euo pipefail
 
+REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+STAMP="$(date +%Y%m%d%H%M%S)"
 
-#.bashrc
-if [ -f ~/.bashrc ]; 
-then
-        mv ~/.bashrc ~/.bashrc_backup
-fi    
-#.inputrc
-if [ -f ~/.inputrc ]; 
-then
-        mv ~/.inputrc ~/.inputrc_backup
-fi    
-ln -s $PWD/.inputrc ~/.inputrc 
+# "<source in repo>:<destination>"
+LINKS=(
+  ".bashrc:$HOME/.bashrc"
+  ".bash_profile:$HOME/.bash_profile"
+  ".bash_aliases:$HOME/.bash_aliases"
+  ".zshrc:$HOME/.zshrc"
+  ".inputrc:$HOME/.inputrc"
+  ".tmux.conf:$HOME/.tmux.conf"
+  ".vimrc:$HOME/.vimrc"
+  ".fzf_commands.sh:$HOME/.fzf_commands.sh"
+  ".alacritty.yml:$HOME/.alacritty.yml"
+  ".wezterm.lua:$HOME/.wezterm.lua"
+  "starship.toml:$HOME/.config/starship.toml"
+)
 
-#.tmux.conf
-if [ -f ~/.tmux.conf ]; then
-        mv ~/.tmux.conf ~/.tmux.conf_backup
-fi    
-ln -s $PWD/.tmux.conf ~/.tmux.conf 
+link() {
+  local src="$REPO/$1" dest="$2"
+  if [ ! -e "$src" ]; then
+    echo "skip: $src does not exist" >&2
+    return
+  fi
+  mkdir -p "$(dirname "$dest")"
+  if [ -L "$dest" ]; then
+    rm "$dest"                       # old symlink: safe to replace
+  elif [ -e "$dest" ]; then
+    mv "$dest" "${dest}_backup_${STAMP}"
+    echo "backed up $dest -> ${dest}_backup_${STAMP}"
+  fi
+  ln -s "$src" "$dest"
+  echo "linked $dest -> $src"
+}
 
-#.vimrc
-if [ -f ~/.vimrc ]; 
-then
-        mv ~/.vimrc ~/.vimrc_backup
-fi    
-ln -s $PWD/.vimrc ~/.vimrc 
-
-#.bash_aliases
-if [ -f ~/.bash_aliases ]; 
-then
-        mv ~/.bash_aliases ~/.bash_aliases_backup
-fi    
-ln -s $PWD/.bash_aliases ~/.bash_aliases 
-
-#alacritty
-if [ -f ~/.alacritty ]; 
-then
-        mv ~/.alacritty ~/.alacritty_backup
-fi    
-ln -s $PWD/.alacritty ~/.alacritty 
-
-#fzf
-if [ -f ~/.fzf_commands.sh ];
-then
-        mv ~/.fzf_commands.sh ~/.fzf_commands.sh_backup
-fi
-ln -s  ~/dotfiles/.fzf_commands.sh ~/.fzf_commands.sh
-
-
-#.starship
-if [ -f ~/.config/starship.toml ]; 
-then
-        mv ~/.config/starship.toml ~/.config/starship.toml_backup
-fi    
-ln -s $PWD/starship.toml ~/.config/starship.toml 
-
-#.wezterm
-if [ -f ~/.wezterm.lua]; 
-then
-        mv ~/.wezterm.lua ~/.wezterm.lua.backup
-fi    
-ln -s $PWD/.wezterm.lua ~/.wezterm.lua
-
+for entry in "${LINKS[@]}"; do
+  link "${entry%%:*}" "${entry#*:}"
+done
