@@ -48,9 +48,4 @@ config.window_background_image_hsb = { brightness = 0.05, hue = 1.0, saturation 
 config.window_background_opacity = 0.95
 config.force_reverse_video_cursor = true
 config.text_background_opacity = 1.0
-config.foreground_text_hsb = {
-	hue = 0.90,
-	saturation = 1.5,
-	brightness = 1.2,
-}
 return config
