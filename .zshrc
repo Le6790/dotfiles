@@ -31,6 +31,11 @@ fi
 typeset -U path
 path+=("$HOME/.local/bin" "$HOME/Applications")
 
+# Exception to the append rule: pyenv shims must beat Apple's /usr/bin/python3.
+# Shims only contain pyenv-managed Python executables, so nothing else is shadowed.
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv &> /dev/null && eval "$(pyenv init - zsh)"
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 
