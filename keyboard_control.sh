@@ -1,4 +1,4 @@
-#!/usr/bin/bash 
+#!/usr/bin/env bash
 
 
 
@@ -17,7 +17,7 @@ enable_keyboard() {
     echo "Keyboard enabled."
   else
     echo "Keyboard not found."
-  fi 
+  fi
 }
 
 disable_keyboard() {
@@ -27,7 +27,7 @@ disable_keyboard() {
     echo "Keyboard disabled."
   else
     echo "Keyboard not found."
-  fi 
+  fi
 }
 
 
@@ -37,6 +37,6 @@ if [[ $1 == "enable" ]]; then
 elif [[ $1 == "disable" ]]; then
   disable_keyboard
 else
-  echo "expecting 1 arguement [enable|disable]"
+  echo "expecting 1 argument [enable|disable]"
 
 fi

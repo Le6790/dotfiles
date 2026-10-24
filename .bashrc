@@ -49,9 +49,6 @@ fi
 # Prompt: starship (below) replaces this when installed; this is the fallback.
 PS1='\[\e[32m\]<\h> \[\e[m\]\[\033[01;36m\]$PWD\[\033[00m\]
 |> '
-if [ -f ~/.bash/prompt.sh ]; then
-    source ~/.bash/prompt.sh
-fi
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
