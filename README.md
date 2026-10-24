@@ -1,6 +1,8 @@
 # Welcome to my collection of DOTFILES
 
-Personal config for macOS (zsh) and Linux / Pop!_OS (bash).
+Personal config for macOS and Linux / Pop!_OS. Bash is the primary shell on both
+(on the Mac the login shell is Homebrew bash, `/opt/homebrew/bin/bash`, and tmux
+is pinned to bash). zsh config is kept for when zsh is launched by hand.
 
 ## Install
 
@@ -16,8 +18,8 @@ symlinks are replaced. Safe to re-run, works from any directory.
 
 | File | Platform | Purpose |
 |---|---|---|
-| `.bashrc`, `.bash_profile`, `.bash_aliases` | Linux (and bash on macOS) | Shell setup. `.bashrc` returns early for non-interactive shells; PATH for those lives in `.bash_profile`. |
-| `.zshrc` | macOS | zsh equivalent; sources `.bash_aliases` and `.fzf_commands.sh`. |
+| `.bashrc`, `.bash_profile`, `.bash_aliases` | both | Primary shell setup. `.bashrc` returns early for non-interactive shells; PATH for those lives in `.bash_profile`. |
+| `.zshrc` | macOS (secondary) | zsh equivalent, used only if zsh is started manually; sources `.bash_aliases` and `.fzf_commands.sh`. |
 | `.inputrc` | bash | Case-insensitive completion. Includes `/etc/inputrc` first so system defaults survive. |
 | `.fzf_commands.sh` | both | fzf helpers: `fcd`, `fdr`, `cdf`, `fe`. |
 | `.tmux.conf`, `.vimrc` | both | tmux / vim config. |
