@@ -37,4 +37,5 @@ this repo.
 
 ## Decisions and history
 
-See `NOTES_*.md` for the why behind changes, open threads, and gotchas.
+The why behind changes, open threads, and gotchas are kept in `NOTES_*.md` in
+this directory. Those files are gitignored (local only), so they are not in the repo.

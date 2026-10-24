@@ -18,3 +18,6 @@
 zellij
 
 .vim
+
+# running decision notes: local only
+NOTES_*.md
