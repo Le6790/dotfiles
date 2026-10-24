@@ -9,7 +9,12 @@ alias tmux="tmux -f ~/.tmux.conf -u"
 alias cura="~/.UltiMaker-Cura-5.3.0-linux.AppImage"
 
 # `source` must run in the current shell; piping it into echo ran it in a subshell.
-alias src='source ~/.bashrc && echo sourced ~/.bashrc'
+# zsh reads .zshrc, not .bashrc.
+if [ -n "$ZSH_VERSION" ]; then
+  alias src='source ~/.zshrc && echo sourced ~/.zshrc'
+else
+  alias src='source ~/.bashrc && echo sourced ~/.bashrc'
+fi
 
 #alias nvim="~/nvim.appimage"
 
@@ -72,10 +77,15 @@ cpp()
 	END { print "" }' total_size="$(stat -c '%s' "${1}")" count=0
 )
 
-# grep through the bash history for a command
+# grep through the shell history for a command
+# (zsh's bare `history` prints only the last 16 entries; `history 1` prints all)
 function hst()
 {
-	history | grep "$1";
+	if [ -n "$ZSH_VERSION" ]; then
+		history 1 | grep "$1"
+	else
+		history | grep "$1"
+	fi
 }
 
 # change directory and list the contents
