@@ -23,7 +23,7 @@ symlinks are replaced. Safe to re-run, works from any directory.
 | `.inputrc` | bash | Case-insensitive completion. Includes `/etc/inputrc` first so system defaults survive. |
 | `.fzf_commands.sh` | both | fzf helpers: `fcd`, `fdr`, `cdf`, `fe`. |
 | `.tmux.conf`, `.vimrc` | both | tmux / vim config. |
-| `.alacritty.yml`, `.wezterm.lua`, `starship.toml` | both | Terminal and prompt. |
+| `.wezterm.lua`, `starship.toml` | both | Terminal and prompt. |
 | `keyboard_control.sh` | Linux/X11 only | Enable/disable the built-in laptop keyboard via `xinput`. Not linked by the installer. |
 | `colors.sh` | both | Prints the 256 terminal colours (for picking tmux colours). Not linked. |
 | `epomaker_split65/` | n/a | Keyboard layout JSON for the Epomaker Split65. Not linked. |

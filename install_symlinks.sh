@@ -17,7 +17,6 @@ LINKS=(
   ".tmux.conf:$HOME/.tmux.conf"
   ".vimrc:$HOME/.vimrc"
   ".fzf_commands.sh:$HOME/.fzf_commands.sh"
-  ".alacritty.yml:$HOME/.alacritty.yml"
   ".wezterm.lua:$HOME/.wezterm.lua"
   "starship.toml:$HOME/.config/starship.toml"
 )
