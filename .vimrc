@@ -60,7 +60,7 @@ nnoremap <leader>pv :Ex<CR>
 
 "FZF
 nnoremap <leader>pf :Files<CR>
-nnoremap <leader>fn :Files ~/notes/<CR>
+nnoremap <leader>fn :Files ~/Documents/obsidian_brain/<CR>
 
 "navigate through buffers
 nnoremap <leader>bn :bn<CR>
