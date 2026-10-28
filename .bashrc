@@ -104,6 +104,11 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# fzf key findings
+[ -f /usr/share/doc/fzf/examples/key-bindings.bash ] && source /usr/share/doc/fzf/examples/key-bindings.bash
+[ -f /usr/share/bash-completion/completions/fzf ] && source /usr/share/bash-completion/completions/fzf
+
+
 # fzf file source: prefer rg, then ag
 if type rg &> /dev/null; then
     export FZF_DEFAULT_COMMAND='rg --files --hidden --follow'
@@ -124,3 +129,4 @@ export NVM_DIR="$HOME/.nvm"
 if command -v starship &> /dev/null; then
     eval "$(starship init bash)"
 fi
+
