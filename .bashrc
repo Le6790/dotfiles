@@ -130,3 +130,9 @@ if command -v starship &> /dev/null; then
     eval "$(starship init bash)"
 fi
 
+# Corporate CA bundle for tools that ignore the system store — WSL only
+if [ -n "$WSL_DISTRO_NAME" ]; then
+    export NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt   # node/npm (pyright)
+    export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt    # python requests
+    export PIP_CERT=/etc/ssl/certs/ca-certificates.crt               # pip/pipx
+fi
